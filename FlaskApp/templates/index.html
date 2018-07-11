@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Fortnite Stats!</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='stats.js') }}"></script>
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Luckiest+Guy" />
+	<style>
+		#copy {
+			position: absolute !important;
+			right: 0 !important;
+			bottom: 0 !important;
+			left: 0 !important;
+			padding: 1rem !important;
+			background-color: #efefef !important;
+			text-align: center !important;
+		}
+
+		body {
+			font-family: "Luckiest Guy";
+		}
+		th,td{
+			text-align: center !important;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1 style="text-align: center">FORTNITE STATS</h1>
+		</div>
+		<div class="jumbotron">
+			<form method="get" role="form">
+				<div class="form-group">
+					<h4 for="username">GAMETAG</h4>
+					<input type="text" class="form-control" id="username" name="username" placeholder="NINJA" required>
+				</div>
+				<div class="form-group">
+					<h4 for="platform">PLATFORM</h4>
+					<select class="form-control" id="platform" name="platform">
+						<option value="pc">PC</option>
+						<option value="ps4">PS4</option>
+						<option value="xb1">Xbox One</option>
+					</select>
+					<small id="platformHelp" class="form-text text-muted"> pc, ps4 or xb1 </small>
+				</div>
+				<button id="getStats" class="btn btn-primary">GO!</button>
+			</form>
+		</div>
+		<div class="table-responsive results" hidden>
+			<table class="table table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">KILLS</th>
+						<th scope="col">WINS</th>
+						<th scope="col">MATCHES</th>
+						<th scope="col">KILL RATE</th>
+						<th scope="col">WIN RATE</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">SOLO</th>
+						<td id="kills-solo">-</td>
+						<td id="wins-solo">-</td>
+						<td id="matches-solo">-</td>
+						<td id="kr-solo">-</td>
+						<td id="wr-solo">-</td>
+					</tr>
+					<tr>
+						<th scope="row">DUO</th>
+						<td id="kills-duo">-</td>
+						<td id="wins-duo">-</td>
+						<td id="matches-duo">-</td>
+						<td id="kr-duo">-</td>
+						<td id="wr-duo">-</td>
+					</tr>
+					<tr>
+						<th scope="row">SQUAD</th>
+						<td id="kills-squad">-</td>
+						<td id="wins-squad">-</td>
+						<td id="matches-squad">-</td>
+						<td id="kr-squad">-</td>
+						<td id="wr-squad">-</td>
+					</tr>
+					<tr>
+						<th scope="row">TOTAL</th>
+						<td id="kills-total">-</td>
+						<td id="wins-total">-</td>
+						<td id="matches-total">-</td>
+						<td id="kr-total">-</td>
+						<td id="wr-total">-</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+<footer class="footer" id="copy">
+	<p>&copy; 2018 ABEL. FORTNITE IS A REGISTRED TRADEMARK OF EPIC GAMES. </p>
+</footer>
+</html>

@@ -1,0 +1,9 @@
+---
+# Hostname
+host : "127.0.0.1"
+
+# Listen port
+port : "5000"
+
+# Debug mode
+debug : False
