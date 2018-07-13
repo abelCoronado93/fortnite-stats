@@ -6,10 +6,17 @@ $(function () {
 				username: $("#username").val(),
 				platform: $("#platform").val()
 			},
-				function (data) {
-					processData(data);
-					$(".results").show();
-				});
+			function (data) {
+				processData(data);
+				$(".results").show();
+				$("#userError").hide();
+				$("#username-form").removeClass("has-error");
+			})
+			.fail(function(data){
+				$("#userError").text(data.responseJSON.message.toUpperCase()).show();
+				$("#username-form").addClass("has-error");
+				$(".results").hide();
+			});
 			return false;
 		}
 		return false;
@@ -29,4 +36,10 @@ $(function () {
 		$("#wr-total").text(data.totals.winrate);
 		return false;
 	}
+	$("#username").on("input", function() {
+		if ($("#username").val() === "") {
+			$("#username-form").removeClass("has-error");
+			$("#userError").hide();
+		}
+	});
 });

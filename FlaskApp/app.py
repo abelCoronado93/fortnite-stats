@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, json
-from fortnite_api import Fortnite
+from flask import Flask, render_template, request, json, jsonify
+from fortnite_api import Fortnite, InvalidUsage
 import yaml
 
 app = Flask(__name__)
@@ -12,9 +12,17 @@ def index():
 def stats():
     print("gametag: " + request.args.get('username'))
     print("platform: " + request.args.get('platform'))
+
     fortnite = Fortnite(request.args.get('username'), request.args.get('platform'))
     stats = fortnite.get_stats()
+
     return json.dumps(stats)
+
+@app.errorhandler(InvalidUsage)
+def handle_invalid_usage(error):
+    response = jsonify(error.to_dict())
+    response.status_code = error.status_code
+    return response
 
 if __name__ == "__main__":
     with open("conf/server_conf.yaml", 'r') as stream:
