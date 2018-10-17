@@ -1,4 +1,21 @@
-# fortnite-stats
+# Flask App with Docker
+Web app to know your Fortnite stats.
+
+## Requisites
+ - Docker
+ - Fortnite API Key (https://fortniteapi.com) [Requests limit per 24 hours is 250]
+ - Replace "MyAPIKey" in the yaml
+ 
+## Installation
+
+```
+ docker build -t <image_name> .
+ docker run --name fortnite-stats -p 80:5000 <image_name>
+```
+ - Browser: http:/localhost:80
+
+
+# fortnite-stats script (.sh)
 Python script to know your Fortnite stats.
 
 ## Requisites
